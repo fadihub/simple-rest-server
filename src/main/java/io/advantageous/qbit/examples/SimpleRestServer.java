@@ -40,7 +40,7 @@ public class SimpleRestServer {
     public static void main(String... args) throws Exception {
 
 
-        final ServiceServer serviceServer = new ServiceServerBuilder().setPort(6060).setQueueBuilder(
+        final ServiceServer serviceServer = new ServiceServerBuilder().setPort(6060).setRequestQueueBuilder(
                 new QueueBuilder().setLinkTransferQueue().setTryTransfer(true).setBatchSize(10).setPollWait(10)
         ).setNumberOfOutstandingRequests(1000000).setTimeoutSeconds(40)
                 .build();
