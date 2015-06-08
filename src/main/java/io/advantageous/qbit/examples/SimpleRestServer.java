@@ -2,9 +2,9 @@ package io.advantageous.qbit.examples;
 
 import io.advantageous.qbit.annotation.RequestMapping;
 import io.advantageous.qbit.queue.QueueBuilder;
-import io.advantageous.qbit.server.ServiceServer;
-import io.advantageous.qbit.server.ServiceServerBuilder;
-import org.boon.Boon;
+import io.advantageous.qbit.server.ServiceEndpointServer;
+import io.advantageous.qbit.server.EndpointServerBuilder;
+
 
 import java.util.Collections;
 import java.util.List;
@@ -40,7 +40,7 @@ public class SimpleRestServer {
     public static void main(String... args) throws Exception {
 
 
-        final ServiceServer serviceServer = new ServiceServerBuilder().setPort(6060).setRequestQueueBuilder(
+        final ServiceEndpointServer serviceServer = new EndpointServerBuilder().setPort(6060).setRequestQueueBuilder(
                 new QueueBuilder().setLinkTransferQueue().setTryTransfer(true).setBatchSize(10).setPollWait(10)
         ).setNumberOfOutstandingRequests(1000000).setTimeoutSeconds(40)
                 .build();
@@ -48,6 +48,5 @@ public class SimpleRestServer {
         serviceServer.initServices(new MyService());
         serviceServer.start();
 
-        Boon.gets();
     }
 }
