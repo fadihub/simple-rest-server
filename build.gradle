@@ -16,7 +16,7 @@ repositories {
 
 
 task runRestServer(type: JavaExec, dependsOn: 'classes') {
-    main = "com.example.RestServer"
+    main = "com.example.SimpleRestServer"
     classpath = sourceSets.main.runtimeClasspath
 }
 
